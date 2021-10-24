@@ -1,9 +1,6 @@
 package ProyectoLenguajeSenas.Repositorys;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import ProyectoLenguajeSenas.Categorias.Bebida;
-
-public interface LenguaSenaBebida extends JpaRepository<Bebida, String> {
+public interface LenguaSenaBebida{ 
+//extends MongoRepository<Bebida, String> {
 
 }

@@ -1,4 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: "mongodb+srv://ricm2608:jtkGdPdt3rnoWXf2@clusterlenguajesenas.052ab.mongodb.net/LenguajeSenas?retryWrites=true&w=majority"
+      uri: "mongodb+srv://ricm2608:jtkGdPdt3rnoWXf2@clusterlenguajesenas.052ab.mongodb.net/LenguajeSenas?retryWrites=true&w=majority&serverSelectionTimeoutMS=200&connectTimeoutMS=200&socketTimeoutMS=200&maxPoolSize=200" 
+      database: "LenguajeSenas"
+      repositories:
+        type: auto

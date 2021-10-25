@@ -19,6 +19,11 @@ public class LenguaSenaLetraServicesImpl implements LenguaSenaLetraServices {
 	public List<Letra> mostrarTodos() {
 		return repository.findAll();
 	}
+
+	@Override
+	public void guardarActualizar(Letra letra) {
+		repository.save(letra);
+	}
 	
 	
 	

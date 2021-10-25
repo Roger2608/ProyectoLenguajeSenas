@@ -1,4 +1,4 @@
-package ProyectoLenguajeSenas.Util;
+package ProyectoLenguajeSenas.util;
 
 public enum CategoriaLenguaSena {
 	ADJETIVO,

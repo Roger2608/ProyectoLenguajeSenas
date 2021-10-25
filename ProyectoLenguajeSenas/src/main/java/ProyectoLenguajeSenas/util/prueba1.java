@@ -1,4 +1,4 @@
-package ProyectoLenguajeSenas.Util;
+package ProyectoLenguajeSenas.util;
 
 import ProyectoLenguajeSenas.Categorias.Animal;
 import ProyectoLenguajeSenas.Categorias.LenguaSordo;

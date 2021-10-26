@@ -21,10 +21,18 @@ public class LenguaSenaLetraServicesImpl implements LenguaSenaLetraServices {
 	}
 
 	@Override
-	public void guardarActualizar(Letra letra) {
+	public void guardarLetra(Letra letra) {
 		repository.save(letra);
 	}
 	
+	@Override
+	public void actualizarLetra(Letra letra) {
+		repository.save(letra);
+	}
 	
+	@Override
+	public void eliminarLetra(Letra letra) {
+		repository.delete(letra);
+	}
 	
 }

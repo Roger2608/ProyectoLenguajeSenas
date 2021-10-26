@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,8 +34,22 @@ public class LenguaSenaLetrasController {
 	@PostMapping(path="/letras/new", 
 			consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<MessageResponse> guardar(@RequestBody Letra letra) {
-		servicioLetra.guardarActualizar(letra);
+		servicioLetra.guardarLetra(letra);
 		return ResponseEntity.ok(new MessageResponseOk("guardado con exito"));
 	}
-
+	
+	@PutMapping(path="/letras/update", 
+			consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<MessageResponse> update(@RequestBody Letra letra) {
+		servicioLetra.actualizarLetra(letra);
+		return ResponseEntity.ok(new MessageResponseOk("actualizado con exito"));
+	}
+	
+	@DeleteMapping(path="/letras/delete", 
+			consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<MessageResponse> delete(@RequestBody Letra letra) {
+		servicioLetra.eliminarLetra(letra);
+		return ResponseEntity.ok(new MessageResponseOk("eliminado con exito"));
+	}
+	
 }

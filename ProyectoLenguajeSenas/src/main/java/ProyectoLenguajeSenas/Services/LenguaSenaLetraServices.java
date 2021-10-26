@@ -7,5 +7,7 @@ import ProyectoLenguajeSenas.Categorias.Letra;
 public interface LenguaSenaLetraServices {
 	
 	public List<Letra> mostrarTodos();
-	public void guardarActualizar(Letra letra); 
+	public void guardarLetra(Letra letra); 
+	public void actualizarLetra(Letra letra);
+	public void eliminarLetra(Letra letra);
 }

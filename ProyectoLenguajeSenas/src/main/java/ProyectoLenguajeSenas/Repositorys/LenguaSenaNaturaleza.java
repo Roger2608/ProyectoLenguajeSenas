@@ -1,6 +1,8 @@
 package ProyectoLenguajeSenas.Repositorys;
 
-public interface LenguaSenaNaturaleza{ 
-//extends MongoRepository<Naturaleza, String> {
+import ProyectoLenguajeSenas.Categorias.Naturaleza;
+import ProyectoLenguajeSenas.logic.generic.AbstractRepositoryInterface;
+
+public interface LenguaSenaNaturaleza extends AbstractRepositoryInterface<Naturaleza, String> {
 
 }

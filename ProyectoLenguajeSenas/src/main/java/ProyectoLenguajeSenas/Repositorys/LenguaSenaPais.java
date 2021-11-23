@@ -1,6 +1,8 @@
 package ProyectoLenguajeSenas.Repositorys;
 
-public interface LenguaSenaPais{ 
-//extends JpaRepository<Pais, String> {
+import ProyectoLenguajeSenas.Categorias.Pais;
+import ProyectoLenguajeSenas.logic.generic.AbstractRepositoryInterface;
+
+public interface LenguaSenaPais extends AbstractRepositoryInterface<Pais, String> {
 
 }

@@ -15,7 +15,14 @@ public class Letra extends LenguaSordo{
 	public Letra() {
 		super();
 	}
-
+	
+	public Letra(String id, String imagen, String nombre, String Categoria) {
+		this.setId(id);
+		this.setImagen(imagen);
+		this.setNombre(nombre);
+		this.setCategoria(Categoria);
+	}
+	
 	@Override
 	public String getId() {
 		return super.getId();
@@ -61,5 +68,4 @@ public class Letra extends LenguaSordo{
 		// TODO Auto-generated method stub
 		super.setCategoria(category);
 	}
-	
 }

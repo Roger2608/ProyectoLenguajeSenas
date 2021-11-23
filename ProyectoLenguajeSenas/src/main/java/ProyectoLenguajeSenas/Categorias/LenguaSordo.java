@@ -61,8 +61,7 @@ public class LenguaSordo implements Serializable{
 	@Override
 	public String toString() {
 		return "LenguaSordo [getId()=" + getId() + ", getNombre()=" + getNombre() + ", getImagen()=" + getImagen()
-				+ ", getCategoria()=" + getCategoria() + "]";
+		+ ", getCategoria()=" + getCategoria() + "]";
 	}
-	
 	
 }

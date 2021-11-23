@@ -1,5 +1,7 @@
 package ProyectoLenguajeSenas.Repositorys;
 
-public interface LenguaSenaAmbienteYArticuloHogar {
-//	extends MongoRepository<AmbienteYArticuloHogar, String> {
+import ProyectoLenguajeSenas.Categorias.AmbienteYArticuloHogar;
+import ProyectoLenguajeSenas.logic.generic.AbstractRepositoryInterface;
+
+public interface LenguaSenaAmbienteYArticuloHogar extends AbstractRepositoryInterface<AmbienteYArticuloHogar, String> {
 }

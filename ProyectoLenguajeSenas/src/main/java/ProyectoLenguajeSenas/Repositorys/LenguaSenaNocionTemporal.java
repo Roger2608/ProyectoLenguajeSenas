@@ -1,6 +1,8 @@
 package ProyectoLenguajeSenas.Repositorys;
 
-public interface LenguaSenaNocionTemporal{ 
-//extends MongoRepository<NocionTemporal, String> {
+import ProyectoLenguajeSenas.Categorias.NocionTemporal;
+import ProyectoLenguajeSenas.logic.generic.AbstractRepositoryInterface;
+
+public interface LenguaSenaNocionTemporal extends AbstractRepositoryInterface<NocionTemporal, String> {
 
 }

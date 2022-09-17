@@ -1,7 +1,0 @@
-package ProyectoLenguajeSenas.Repositorys;
-
-import ProyectoLenguajeSenas.Categorias.AmbienteYArticuloHogar;
-import ProyectoLenguajeSenas.logic.generic.AbstractRepositoryInterface;
-
-public interface LenguaSenaAmbienteYArticuloHogar extends AbstractRepositoryInterface<AmbienteYArticuloHogar, String> {
-}

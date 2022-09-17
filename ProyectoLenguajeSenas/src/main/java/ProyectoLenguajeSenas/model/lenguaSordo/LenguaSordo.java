@@ -1,4 +1,4 @@
-package ProyectoLenguajeSenas.model;
+package ProyectoLenguajeSenas.model.lenguaSordo;
 
 import java.io.Serializable;
 

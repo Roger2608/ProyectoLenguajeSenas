@@ -1,4 +1,4 @@
-package ProyectoLenguajeSenas.Controllers;
+package ProyectoLenguajeSenas.controller.lenguaSordo;
 
 import java.util.List;
 

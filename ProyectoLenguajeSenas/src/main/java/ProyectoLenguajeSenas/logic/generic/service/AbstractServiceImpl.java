@@ -15,16 +15,6 @@ public abstract class AbstractServiceImpl<T,ID> implements AbstractServiceInterf
 	public List<T> mostrarTodos(String ID) {
 		return abstractRepository.findAll();
 	}
-
-	@Override
-	public void guardar( T t, String ID) {
-		abstractRepository.save(t);
-	}
-	
-	@Override
-	public void delete(T t, String ID) {
-		abstractRepository.delete(t);
-	}
 	
 	public void composeRepository(AbstractNoRepository<T,ID> abstractRepository) {
 		this.abstractRepository = abstractRepository;

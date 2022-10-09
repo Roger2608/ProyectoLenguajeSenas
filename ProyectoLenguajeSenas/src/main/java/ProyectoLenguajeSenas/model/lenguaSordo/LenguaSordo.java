@@ -2,25 +2,32 @@ package ProyectoLenguajeSenas.model.lenguaSordo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(catalog = "Isos_lenguaje_sena", name = "ls_lengua_sordo")
 public class LenguaSordo implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String id;
-	private String nombre;
-	private String imagen;
-	private String categoria;
 	
-	public LenguaSordo(String id, String nombre, String imagen, String categoria) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.imagen = imagen;
-		this.categoria = categoria;
-	}
+	@Id
+	@Column(name="lengua_id", unique = true, nullable = false, length = 7)
+	private String id;
+	@Column(name="lengua_nombre", nullable = false)
+	private String nombre;
+	@Column(name="lengua_path_image", nullable = false)
+	private String imagen;
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
+	private CategoriaLenguaSordo categoria;
 
 	public LenguaSordo() {
 		super();
@@ -50,11 +57,11 @@ public class LenguaSordo implements Serializable{
 		this.imagen = imagen;
 	}
 
-	public String getCategoria() {
+	public CategoriaLenguaSordo getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(CategoriaLenguaSordo categoria) {
 		this.categoria = categoria;
 	}
 

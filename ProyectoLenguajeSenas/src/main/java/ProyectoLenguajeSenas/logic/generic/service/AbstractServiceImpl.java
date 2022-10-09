@@ -2,33 +2,32 @@ package ProyectoLenguajeSenas.logic.generic.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import ProyectoLenguajeSenas.logic.generic.repository.AbstractNoRepository;
 
-import ProyectoLenguajeSenas.logic.generic.repository.AbstractRepository;
-
-@Service
-public class AbstractServiceImpl<T,ID> implements AbstractServiceInterface<T>{
+public abstract class AbstractServiceImpl<T,ID> implements AbstractServiceInterface<T,ID>{
 	
-	@Autowired
-	AbstractRepository<T, ID> abstractRepository;
+	AbstractNoRepository<T,ID> abstractRepository; 
 	
 	public AbstractServiceImpl() {
 	}
 	
 	@Override
-	public List<T> mostrarTodos(String categoria) {
+	public List<T> mostrarTodos(String ID) {
 		return abstractRepository.findAll();
 	}
 
 	@Override
-	public void guardar(T t, String categoria) {
+	public void guardar( T t, String ID) {
 		abstractRepository.save(t);
 	}
 	
 	@Override
-	public void delete(T t, String categoria) {
+	public void delete(T t, String ID) {
 		abstractRepository.delete(t);
+	}
+	
+	public void composeRepository(AbstractNoRepository<T,ID> abstractRepository) {
+		this.abstractRepository = abstractRepository;
 	}
 	
 }

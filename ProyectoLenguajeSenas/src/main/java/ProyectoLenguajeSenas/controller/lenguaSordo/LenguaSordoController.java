@@ -16,21 +16,34 @@ import ProyectoLenguajeSenas.model.lenguaSordo.LenguaSordo;
 import ProyectoLenguajeSenas.service.lenguaSordo.LenguaSordoService;
 
 @RestController
-@RequestMapping(path ="/lenguaSenas/{categoria}",
+@RequestMapping(path ="/lenguaSenas",
 	produces = MediaType.APPLICATION_JSON_VALUE)
-public class LenguaSordoController extends AbstractControllerImpl<LenguaSordo, String>{
+public class LenguaSordoController extends AbstractControllerImpl<LenguaSordo>{
 	
 	@Autowired
 	LenguaSordoService service;
 	
 	@SuppressWarnings("unchecked")
-	@GetMapping(path = "/viewAll", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<LenguaSordo>> findAllCategory(@PathVariable String categoria) {
-		return super.mostrarTodasCategorias((AbstractServiceInterface<LenguaSordo, String>) service, categoria);
+	@GetMapping(path = "/category/{category}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<LenguaSordo>> findAllByCategory(@PathVariable String category) {
+		return super.findAllByCategory((AbstractServiceInterface<LenguaSordo>) service, category);
 	}
 	
-	// Go to find by ID
-	// Go to find by name
-	// Go to find All by sub_category
+	@SuppressWarnings("unchecked")
+	@GetMapping(path = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<LenguaSordo> findbyId(@PathVariable String id) {
+		return super.findById((AbstractServiceInterface<LenguaSordo>) service, id);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@GetMapping(path = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<LenguaSordo> findByName(@PathVariable String name) {
+		return super.findByName((AbstractServiceInterface<LenguaSordo>) service, name);
+	}
+	
+//	@GetMapping(path = "/subCategory/{subCategory}", produces = MediaType.APPLICATION_JSON_VALUE)
+//	public ResponseEntity<List<LenguaSordo>> findAllBySubCategory(@PathVariable String subCategory) {
+//		return  ResponseEntity.ok(service.findAllBySubCategory(subCategory));
+//	}
 
 }

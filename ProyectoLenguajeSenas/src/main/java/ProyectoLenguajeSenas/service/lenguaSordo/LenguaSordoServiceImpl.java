@@ -25,9 +25,11 @@ public class LenguaSordoServiceImpl extends AbstractServiceImpl<LenguaSordo, Str
 	public void coomposeAbstService() {
 		super.composeRepository(repository);
 	}
-	
-	public List<LenguaSordo> mostrarTodos(String categoria){
-		return super.mostrarTodos(categoria);
+
+	@Override
+	public List<LenguaSordo> findAllBySubCategory(String subCategory) {
+		return null;
 	}
+
 
 }

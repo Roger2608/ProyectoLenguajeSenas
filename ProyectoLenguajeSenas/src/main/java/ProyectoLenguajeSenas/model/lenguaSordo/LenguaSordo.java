@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,9 +25,14 @@ public class LenguaSordo implements Serializable{
 	private String id;
 	@Column(name="lengua_nombre", nullable = false)
 	private String nombre;
+	@Column(name="lengua_short_description", nullable = false)
+	private String shortDescription;
+	@Column(name="lengua_long_description", nullable = false)
+	private String longDescription;
 	@Column(name="lengua_path_image", nullable = false)
 	private String imagen;
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "category_id", nullable = false, updatable = false)
 	private CategoriaLenguaSordo categoria;
 
 	public LenguaSordo() {
@@ -48,6 +54,22 @@ public class LenguaSordo implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	public String getShortDescription() {
+		return shortDescription;
+	}
+
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
+
+	public String getLongDescription() {
+		return longDescription;
+	}
+
+	public void setLongDescription(String longDescription) {
+		this.longDescription = longDescription;
+	}
 
 	public String getImagen() {
 		return imagen;
@@ -64,11 +86,4 @@ public class LenguaSordo implements Serializable{
 	public void setCategoria(CategoriaLenguaSordo categoria) {
 		this.categoria = categoria;
 	}
-
-	@Override
-	public String toString() {
-		return "LenguaSordo [getId()=" + getId() + ", getNombre()=" + getNombre() + ", getImagen()=" + getImagen()
-		+ ", getCategoria()=" + getCategoria() + "]";
-	}
-	
 }

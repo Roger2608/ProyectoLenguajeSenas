@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 import ProyectoLenguajeSenas.logic.generic.service.AbstractServiceInterface;
-import ProyectoLenguajeSenas.model.lenguaSordo.LenguaSordo;
 
 public abstract class AbstractControllerImpl<T> implements AbstractControllerInterface<T> {
 

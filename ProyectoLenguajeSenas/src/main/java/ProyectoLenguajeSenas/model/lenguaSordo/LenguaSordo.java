@@ -6,6 +6,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,8 +23,9 @@ public class LenguaSordo implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="lengua_id", unique = true, nullable = false, length = 7)
-	private String id;
+	@Column(name="lengua_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	@Column(name="lengua_nombre", nullable = false)
 	private String nombre;
 	@Column(name="lengua_short_description", nullable = false)
@@ -32,18 +35,18 @@ public class LenguaSordo implements Serializable{
 	@Column(name="lengua_path_image", nullable = false)
 	private String imagen;
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "category_id", nullable = false, updatable = false)
+	@JoinColumn(name = "category_id", nullable = false)
 	private CategoriaLenguaSordo categoria;
 
 	public LenguaSordo() {
 		super();
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -7,5 +7,6 @@ import ProyectoLenguajeSenas.model.lenguaSordo.LenguaSordo;
 public interface LenguaSordoService {
 	
 	public abstract List<LenguaSordo> findAllBySubCategory(String subCategory);
+	public void save(LenguaSordo lenguaSordo);
 
 }

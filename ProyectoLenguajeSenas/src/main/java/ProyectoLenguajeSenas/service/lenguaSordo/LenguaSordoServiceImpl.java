@@ -12,7 +12,7 @@ import ProyectoLenguajeSenas.model.lenguaSordo.LenguaSordo;
 import ProyectoLenguajeSenas.repository.lenguaSordo.LenguaSordoRepository;
 
 @Service
-public class LenguaSordoServiceImpl extends AbstractServiceImpl<LenguaSordo, String> implements LenguaSordoService{
+public class LenguaSordoServiceImpl extends AbstractServiceImpl<LenguaSordo, Integer> implements LenguaSordoService{
 	
 	@Autowired
 	LenguaSordoRepository repository;
@@ -29,6 +29,11 @@ public class LenguaSordoServiceImpl extends AbstractServiceImpl<LenguaSordo, Str
 	@Override
 	public List<LenguaSordo> findAllBySubCategory(String subCategory) {
 		return null;
+	}
+
+	@Override
+	public void save(LenguaSordo lenguaSordo) {
+		repository.save(lenguaSordo);
 	}
 
 

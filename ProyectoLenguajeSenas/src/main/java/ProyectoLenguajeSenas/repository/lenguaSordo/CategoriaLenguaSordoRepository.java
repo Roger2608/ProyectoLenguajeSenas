@@ -1,0 +1,8 @@
+package ProyectoLenguajeSenas.repository.lenguaSordo;
+
+import ProyectoLenguajeSenas.logic.generic.repository.AbstractCategoriesNoRepository;
+import ProyectoLenguajeSenas.model.lenguaSordo.CategoriaLenguaSordo;
+
+public interface CategoriaLenguaSordoRepository extends AbstractCategoriesNoRepository<CategoriaLenguaSordo, Integer>{
+
+}

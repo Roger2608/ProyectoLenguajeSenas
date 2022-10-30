@@ -1,4 +1,4 @@
-package ProyectoLenguajeSenas.config;
+package ProyectoLenguajeSenas.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -38,11 +38,12 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable()
 				.authorizeRequests()
-				.antMatchers(HttpMethod.GET, "/lenguaSenas/category/{category}").permitAll()
-				.antMatchers(HttpMethod.GET, "/lenguaSenas/id/{id}").hasAnyRole("USER")
+				.antMatchers(HttpMethod.GET, "/lenguaSenas/category/{category}").authenticated()
+				.antMatchers(HttpMethod.GET, "/lenguaSenas/id/{id}").authenticated()
 				.antMatchers(HttpMethod.GET, "/lenguaSenas/name/{name}").authenticated()
+				.antMatchers(HttpMethod.POST, "/lenguaSenas/upload").hasAnyRole("ADMIN")
 				.antMatchers(HttpMethod.POST, "/lenguaSenas/auth/**").permitAll()
-				.anyRequest().authenticated()
+				.anyRequest().permitAll()
 				.and().exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
 				.and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

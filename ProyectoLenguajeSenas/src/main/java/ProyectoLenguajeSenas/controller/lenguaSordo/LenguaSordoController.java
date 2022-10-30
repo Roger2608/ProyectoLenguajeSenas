@@ -25,13 +25,13 @@ public class LenguaSordoController extends AbstractControllerImpl<LenguaSordo>{
 	
 	@SuppressWarnings("unchecked")
 	@GetMapping(path = "/category/{category}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<LenguaSordo>> findAllByCategory(@PathVariable String category) {
+	public ResponseEntity<List<LenguaSordo>> findAllByCategory(@PathVariable int category) {
 		return super.findAllByCategory((AbstractServiceInterface<LenguaSordo>) service, category);
 	}
 	
 	@SuppressWarnings("unchecked")
 	@GetMapping(path = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<LenguaSordo> findbyId(@PathVariable String id) {
+	public ResponseEntity<LenguaSordo> findbyId(@PathVariable int id) {
 		return super.findById((AbstractServiceInterface<LenguaSordo>) service, id);
 	}
 	

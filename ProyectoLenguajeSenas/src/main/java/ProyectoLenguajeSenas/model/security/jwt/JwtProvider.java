@@ -20,19 +20,15 @@ import io.jsonwebtoken.UnsupportedJwtException;
 
 @Component
 public class JwtProvider {
-    //Logger para mostrar los errores
     private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
 
-    //Clave para verificar el token
     @Value("${isos.jwt.secret}")
     private String secret;
 
-    //Tiempo base de expiración
     @Value("${isos.jwt.time.out}")
     private int expiration;
 
     public String generateToken(Authentication authentication){
-      
         UserDetails mainUser = (UserDetails) authentication.getPrincipal();
         logger.error(mainUser.getUsername());
         return Jwts.builder().setSubject(mainUser.getUsername())
@@ -41,13 +37,10 @@ public class JwtProvider {
         .signWith(SignatureAlgorithm.HS512, secret)
         .compact();
     }
-    //Creamos una función que permita obtener el nombre de usuario con el token
+    
     public String getUserNameFromToken(String token){
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
-
-    //Creamos una función que permita validar nuestro token con la firma secreta
-    //Controlamos cualquier error que pueda existir con el token
 
     public boolean validateToken(String token){
         try {

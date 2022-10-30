@@ -76,9 +76,9 @@ public class AuthController {
 		user.setUpdateDate(LocalDate.now());
 
 		Set<Rol> roles = new HashSet<>();
-		roles.add(roleService.getByRoleName("ROL_USER").get());
-		if (newUser.getRoles().contains("ADMIN"))
-			roles.add(roleService.getByRoleName("ROL_ADMIN").get());
+		roles.add(roleService.getByRoleName("ROLE_USER").get());
+//		if (newUser.getRoles().contains("ADMIN"))
+//			roles.add(roleService.getByRoleName("ROLE_ADMIN").get());
 		user.setRol(roles);
 		userService.save(user);
 		return new ResponseEntity<>(new Message("Registro exitoso! Inicie sesión"), HttpStatus.CREATED);

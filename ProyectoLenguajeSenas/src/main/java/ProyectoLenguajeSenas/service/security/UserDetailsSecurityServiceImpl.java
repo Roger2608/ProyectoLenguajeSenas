@@ -2,6 +2,7 @@ package ProyectoLenguajeSenas.service.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import ProyectoLenguajeSenas.model.security.user.MainUser;
 import ProyectoLenguajeSenas.model.security.user.User;
 
 @Service
-public class UserDetailsSecurityServiceImpl implements UserDetailsSecurityService{
+public class UserDetailsSecurityServiceImpl implements UserDetailsSecurityService, UserDetailsService{
 	
 	@Autowired
 	UserSecurityService userService;

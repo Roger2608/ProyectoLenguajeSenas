@@ -1,8 +1,5 @@
 package ProyectoLenguajeSenas.model.security.request;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
@@ -22,9 +19,7 @@ public class NewUser {
 	private String telefono;
 	@NotBlank
 	private String status;
-
-	private Set<String> roles = new HashSet<>();
-
+	
 	public NewUser() {
 	}
 
@@ -51,15 +46,6 @@ public class NewUser {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public Set<String> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<String> roles) {
-		this.roles = roles;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}

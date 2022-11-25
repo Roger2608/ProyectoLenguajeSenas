@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 
 import ProyectoLenguajeSenas.model.batch.lenguaSordo.LenguaSordoRecipient;
+import ProyectoLenguajeSenas.model.batch.lenguaSordo.LssExecutionListener;
 import ProyectoLenguajeSenas.model.batch.lenguaSordo.LssItemProcessor;
 import ProyectoLenguajeSenas.model.batch.lenguaSordo.LssItemWriter;
 import ProyectoLenguajeSenas.model.lenguaSordo.LenguaSordo;
@@ -33,16 +34,15 @@ public class BatchConfig {
 	
 	@Bean
 	@StepScope
-	public FlatFileItemReader<LenguaSordoRecipient> reader(){
+	public FlatFileItemReader<LenguaSordoRecipient> reader(@Value("#{jobParameters['inputfile']}") String inputFile){
 		
 		return new FlatFileItemReaderBuilder<LenguaSordoRecipient>()
 			   .name("LssItemReader")
-			   .resource(new FileSystemResource("src/main/resources/LssFileLoadData.csv"))
-//			   .resource(new FileSystemResource("#{jobParameters['inputfile']}"))
+			   .resource(new FileSystemResource(inputFile))
 			   .linesToSkip(1)
 			   .delimited()
 			   .delimiter("|")
-			   .names(new String[] {"name", "short_description", "long_description", "category", "sub_category"})
+			   .names(new String[] {"name", "short_description", "long_description", "category", "pais"})
 			   .fieldSetMapper(new BeanWrapperFieldSetMapper<LenguaSordoRecipient>() {{
 				   setTargetType(LenguaSordoRecipient.class);
 			   }})
@@ -59,10 +59,10 @@ public class BatchConfig {
 		return new LssItemWriter();
 	}
 	@Bean
-	public Job importPersonaJob(Step step1) {
+	public Job importPersonaJob(LssExecutionListener listener,Step step1) {
 		return jobBuilderFactory.get("ETL-Load")
 				.incrementer(new RunIdIncrementer())
-//				.listener(listener)
+				.listener(listener)
 				.flow(step1)
 				.end()
 				.build();
@@ -70,9 +70,10 @@ public class BatchConfig {
 	
 	@Bean
 	public Step step1() {
+		
 		return stepBuilderFactory.get("ETL-file-load")
-				.<LenguaSordoRecipient, LenguaSordo> chunk(2)
-				.reader(reader())
+				.<LenguaSordoRecipient, LenguaSordo> chunk(1)
+				.reader(reader(null))
 				.processor(processor())
 				.writer(writer())
 				.build();

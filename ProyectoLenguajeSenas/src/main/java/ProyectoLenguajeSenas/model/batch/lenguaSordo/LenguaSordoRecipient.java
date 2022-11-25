@@ -6,7 +6,7 @@ public class LenguaSordoRecipient {
 	private String short_description;
 	private String long_description;
 	private String category;
-	private String sub_category;
+	private String pais;
 	
 	public LenguaSordoRecipient() {
 	}
@@ -43,12 +43,12 @@ public class LenguaSordoRecipient {
 		this.category = category;
 	}
 
-	public String getSub_category() {
-		return sub_category;
+	public String getPais() {
+		return pais;
 	}
 
-	public void setSub_category(String sub_category) {
-		this.sub_category = sub_category;
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 	
 }
